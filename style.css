@@ -1,3 +1,163 @@
-.poop{
-margin:  100px;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Sedgwick+Ave+Display&display=swap');
+
+body{
+    font-family: "Oswald";
+    font-size: 1.5rem;
+    margin: 0;
+    background-color: gray;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style-type: none;
+}
+
+select, option{
+    font-family: "Oswald";
+}
+
+.header{
+    position: sticky;
+    top:0;
+    overflow: hidden;
+    background-color: whitesmoke;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.077), white),url('https://img.freepik.com/free-vector/seamless-monochrome-vector-screen-tones-isolated-white-background-horizontally-repeatable_8130-3014.jpg');
+    background-size: cover;
+    }
+
+.header_bar{
+    padding: .25rem;
+    padding-bottom: 0;
+    padding-top: 0;
+  text-align: center;
+  font-family: "Sedgwick Ave Display", cursive;
+  font-size: 150%;
+  background: radial-gradient(closest-side, gray, transparent);
+  filter: contrast(50);
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000,
+          -2px 2px 0 #000, 1px 1px 0 #000; color: white;
+}
+
+.menu_bar button{
+    color: gray;
+    text-align: center;
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-decoration: none;
+    cursor:pointer;
+    border: none;
+    font-size: 1.5rem;
+    transition: 0.3s;
+    flex:1;
+    width:auto;
+    border-top: 2px outset white;
+}
+
+.menu_bar button:hover{
+    background-color: gray;
+    color:whitesmoke;
+}
+
+.menu_bar button.active{
+    background-color: gray;
+    color:whitesmoke;
+    
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.menu_bar{
+    display: flex;
+}
+
+.content{
+    padding: 1rem;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.filter_panel{
+    display:flex;
+    margin: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content:left;
+    padding: 4px;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.filter_panel button{
+    padding: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    height: fit-content;
+    width:fit-content;
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+
+    background-image: url('assets/icons/1564525_arrow_load_refresh_reload_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: lightgray;
+}
+
+.filter_panel button:hover{
+    background-color: gray;
+    color:whitesmoke;
+    filter:invert(1);
+}
+
+.filter_dropdown{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    width:fit-content;
+}
+
+.filter_dropdown select{
+    border:none;
+    font-family: "Oswald";
+    background-color: gray;
+    color: whitesmoke;
+}
+
+.filter_choices{
+    display: flex;
+    background-color: lightgray;
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right:1rem;
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sorting{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+.filter_dropdown, .sorting{
+    margin: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sorting_selection{
+    display:block;
 }
