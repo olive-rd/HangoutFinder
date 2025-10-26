@@ -19,9 +19,10 @@
         </div>
         <div class="content" id="Venues">
             <div class="filter_panel">
-                <div class="filter_dropdown">
+                <div class="filter_choices">
+                    <div class="filter_dropdown">
                     <select name="Keywords" id="keyword-select">
-                        <option value="">Select Tags</option>
+                        <option value="None" selected>Select Tags</option>
                         <option value="None">None</option>
                         <option value="Sports">Sports</option>
                         <option value="Horror">Horror</option>
@@ -29,16 +30,18 @@
                         <option value="Vintage-Retro">Vintage/Retro</option>
                         <option value="LGBTQ">LGBTQ+</option>
                     </select>
-                </div>
-                <div class="sorting">
-                    <div class="sorting_selection">
-                        <input type="radio" id="sort_busy" name="sort_by"><label for="sort_busy">Sort by Busyness</label>
                     </div>
-                    <div class="sorting_selection">
-                        <input type="radio" id="sort_dist" name="sort_by"><label for="sort_dist">Sort by Distance</label>
+                    <div class="sorting">
+                        <div class="sorting_selection">
+                            <input type="radio" id="sort_busy" name="sort_by"><label for="sort_busy">Sort by Busyness</label>
+                        </div>
+                        <div class="sorting_selection">
+                            <input type="radio" id="sort_dist" name="sort_by"><label for="sort_dist">Sort by Distance</label>
+                        </div>
                     </div>
                 </div>
-                <button onclick="GenerateVenues(getElementById('keyword-select'), (getElementsByName('sort_by')[0].checked) ? getElementsByName('sort_by')[0].id : getElementsByName('sort_by')[1].id)">_
+
+                <button onclick="GenerateVenues(getElementById('keyword-select').value, (getElementsByName('sort_by')[0].checked) ? getElementsByName('sort_by')[0].id : getElementsByName('sort_by')[1].id)">
                     <img src="assets/icons/1564525_arrow_load_refresh_reload_icon.svg" alt="generate"/>
                 </button>
             </div>

@@ -15,6 +15,10 @@ ul{
     list-style-type: none;
 }
 
+select, option{
+    font-family: "Oswald";
+}
+
 .header{
     position: sticky;
     top:0;
@@ -87,19 +91,34 @@ ul{
     margin: 20%;
     margin-top: 0;
     margin-bottom: 0;
-    justify-content: space-evenly;
-    background-color: lightgray;
+    justify-content:left;
     padding: 4px;
     flex-wrap: nowrap;
+    justify-content: center;
 }
 
 .filter_panel button{
-    padding: 0;
+    padding: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
     margin: auto;
     margin-left: 0;
     margin-right: 0;
     height: fit-content;
     width:fit-content;
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+
+    background-image: url('assets/icons/1564525_arrow_load_refresh_reload_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: lightgray;
+}
+
+.filter_panel button:hover{
+    background-color: gray;
+    color:whitesmoke;
+    filter:invert(1);
 }
 
 .filter_dropdown{
@@ -109,10 +128,34 @@ ul{
     width:fit-content;
 }
 
+.filter_dropdown select{
+    border:none;
+    font-family: "Oswald";
+    background-color: gray;
+    color: whitesmoke;
+}
+
+.filter_choices{
+    display: flex;
+    background-color: lightgray;
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right:1rem;
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
 .sorting{
     display: flex;
     flex-direction: column;
     font-size: 1rem;
+}
+
+.filter_dropdown, .sorting{
+    margin: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .sorting_selection{
