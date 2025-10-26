@@ -29,6 +29,8 @@ app.use(express.static('.'));
 // Parse JSON bodies
 app.use(express.json());
 
+
+
 // API endpoint to get venue data
 app.post('/api/venue-forecast', async (req, res) => {
   try {
@@ -65,6 +67,91 @@ app.post('/api/venue-forecast', async (req, res) => {
   } catch (error) {
     console.error('Error fetching venue data:', error);
     res.status(500).json({ error: 'Failed to fetch venue data' });
+  }
+});
+
+// Combined endpoint: Get nearby venues WITH forecast data
+app.post("/api/bars", async (req, res) => {
+  console.log('🔥 /api/bars endpoint hit with data:', req.body);
+  
+  const { lat, lon, radius = 5000, limit = 10, types = "BAR,CAFE,RESTAURANT,BREWERY" } = req.body;
+  
+  if (!lat || !lon) {
+    console.log('❌ Missing lat/lon in request');
+    return res.status(400).json({ error: "Missing lat/lon" });
+  }
+
+  console.log('📍 Using coordinates:', { lat, lon, radius, limit, types });
+
+  // Step 1: Get venues by location
+  const venueParams = new URLSearchParams({
+    api_key_private: BESTTIME_API_KEY,
+    types: types,
+    lat: lat.toString(),
+    lng: lon.toString(),
+    radius: radius.toString(),
+    order_by: "day_rank_max,reviews",
+    order: "desc,desc",
+    foot_traffic: "both",
+    limit: limit.toString(),
+    page: "0",
+  });
+
+  try {
+    const venueUrl = `https://besttime.app/api/v1/venues/filter?${venueParams.toString()}`;
+    console.log('🌐 Making venue search API request to:', venueUrl);
+    console.log('📍 Coordinates:', { lat, lon, radius });
+    
+    const venueResponse = await fetch(venueUrl);
+    const venueData = await venueResponse.json();
+    
+    console.log('📊 Venue API Response status:', venueResponse.status);
+    console.log('📊 Found venues:', venueData.venues?.length || 0);
+
+    if (venueData.venues && venueData.venues.length > 0) {
+      // Step 2: For each venue, get forecast data
+      const venuesWithForecasts = await Promise.allSettled(
+        venueData.venues.slice(0, 5).map(async (venue) => { // Limit to first 5 to avoid rate limits
+          try {
+            if (venue.venue_name && venue.venue_address) {
+              const forecastParams = new URLSearchParams({
+                'api_key_private': BESTTIME_API_KEY,
+                'venue_name': venue.venue_name,
+                'venue_address': venue.venue_address
+              });
+
+              const forecastUrl = `https://besttime.app/api/v1/forecasts?${forecastParams}`;
+              const forecastResponse = await fetch(forecastUrl, { method: 'POST' });
+              const forecastData = await forecastResponse.json();
+
+              return {
+                ...venue,
+                forecast: forecastData
+              };
+            }
+            return venue;
+          } catch (error) {
+            console.log(`⚠️ Failed to get forecast for ${venue.venue_name}:`, error.message);
+            return venue; // Return venue without forecast if forecast fails
+          }
+        })
+      );
+
+      // Extract successful results
+      const results = venuesWithForecasts
+        .filter(result => result.status === 'fulfilled')
+        .map(result => result.value);
+
+      res.json({
+        ...venueData,
+        venues: results
+      });
+    } else {
+      res.json(venueData);
+    }
+  } catch (err) {
+    console.error("Proxy error:", err);
+    res.status(500).json({ error: "Server proxy failed" });
   }
 });
 

@@ -3,11 +3,58 @@ img.src = 'https://example.com/image.jpg';
 img.alt = 'Description';
 document.body.appendChild(img); // or append to any container
 
+//creating tag selection value
+let tagSelected = "";
+function getSelectedTag() {
+    const selectedTag = document.getElementById('keyword-select');
+    const option = selectedTag.options;
+    
+    
+    for (let i = 0; i < option.length; i++){
+        if (option[i].selected){
+            tagSelected = option[i].value;
+        }
+    }
+    
+    if (tagSelected === "Selected Tags" || tagSelected === "None" ){
+        tagSelected = "BAR,CAFE,RESTAURANT,BREWERY";
+    }
+    
+    if(tagSelected === "Sports"){
+        tagSelected = "BAR,SPORTS_BAR"
+    } 
+    if(tagSelected === "Horror"){tagSelected = "BAR,THEME_BAR"}
+    if(tagSelected === "Goth"){tagSelected = "BAR,THEME_BAR"} 
+    if(tagSelected === "Vintage-Retro"){tagSelected = "BAR,VINTAGE_BAR"}
+    if(tagSelected === "LGBTQ"){tagSelected = "BAR,LGBTQ_BAR"}
+    
+    return tagSelected;
+}
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('venueForm');
     const resultsDiv = document.getElementById('results');
     autoLoadVenues();
+
+    
+ // Add event listener for tag changes
+   const tagSelect = document.getElementById('keyword-select');
+    tagSelect.addEventListener('change', function() {
+        tagSelected = getSelectedTag()
+        console.log('Tag changed to:', this.value);
+
+      
+        
+        // Get current location and reload venues
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const { latitude, longitude } = position.coords;
+                fetchNearbyVenues(latitude, longitude);
+            });
+        }
+    });
 });
 
 //implementing how to get venues based on what's nearby!!!
@@ -17,7 +64,7 @@ function autoLoadVenues() {
         navigator.geolocation.getCurrentPosition(
             position => {
                 const { latitude, longitude } = position.coords;
-                fetchNearbyVenues(latitude, longitude);
+                fetchNearbyVenues(latitude, longitude, );
             },
             error => {
                 console.log('Location access denied or failed:', error);
@@ -36,11 +83,15 @@ function autoLoadVenues() {
 }
 
 
+
+
+
+
 async function fetchNearbyVenues(lat, lon, options = {}) {
     const {
         radius = 2000,        // 2km default
         limit = 15,           // More venues
-        types = "BAR,CAFE,RESTAURANT,BREWERY",
+        types = tagSelected,
         loadingContainer = "venue-container"
     } = options;
 
