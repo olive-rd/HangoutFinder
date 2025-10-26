@@ -1,24 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Busiest Bars Nearby</title>
-<style>
-  body { font-family: Arial; background:#121212; color:#f5f5f5; text-align:center; padding:30px;}
-  h1 { color:#ffcc00; }
-  button { padding:10px 20px; background:#ffcc00; border:none; border-radius:6px; cursor:pointer;}
-  button:hover { background:#ffd633; }
-  .bar-list { margin-top:30px; display:flex; flex-direction:column; align-items:center; gap:10px;}
-  .bar-card { background:#1e1e1e; padding:15px 20px; border-radius:8px; width:80%; max-width:400px; box-shadow:0 0 10px rgba(255,255,255,0.1);}
-  .popularity { color:#00ff99; font-weight:bold;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Busiest Bars Nearby</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #f5f5f5;
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+
+    h1 {
+      color: #ffcc00;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #ffd633;
+      transform: scale(1.05);
+    }
+
+    .bar-list {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .bar-card {
+      background: #1e1e1e;
+      padding: 15px 20px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      text-align: left;
+    }
+
+    .bar-card h3 {
+      color: #ffcc00;
+      margin-bottom: 6px;
+    }
+
+    .bar-card p {
+      margin: 5px 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .bar-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    .popularity {
+      color: #00ff99;
+      font-weight: bold;
+    }
+
+    .rating {
+      color: #ff9966;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-<h1>🍸 Busiest Bars Near You</h1>
-<button id="loadBars">Find Bars</button>
-<div id="barContainer" class="bar-list"></div>
+  <h1>🍸 Busiest Bars Near You</h1>
+  <button id="loadBars">Find Bars</button>
 
-<script src="getInfo.js"></script>
+  <div id="barContainer" class="bar-list">
+    <!-- Bar cards get injected here -->
+  </div>
+
+  <script src="getInfo.js"></script>
 </body>
 </html>
