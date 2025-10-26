@@ -90,10 +90,7 @@ combined.forEach(({ v, g, popularity }) => {
 <section  class="card panel stack venue_display" id="web-only">
        
        <div class="row">
-        <div id="venueName">
-    <h2>${v.venue_name || 'Unknown Venue'}</h2>
-
-</div>
+     
       
 
 <div id="ratings">

@@ -6,15 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve static files (HTML, CSS, JS, images, etc.)
-app.use(express.static('.'));
-
-// Serve index.html at the root route
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: '.' });
-});
-
-
 
 
 // Fetch bars/venues from BestTime
