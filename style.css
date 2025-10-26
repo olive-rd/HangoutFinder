@@ -124,7 +124,7 @@ select, option{
     background-image: url('assets/icons/1564525_arrow_load_refresh_reload_icon.svg');
     background-repeat: no-repeat;
     background-position: center;
-    background-color: var(--accent-color2);
+    background-color: var(--base-color2);
 }
 
 .filter_panel button:hover{
@@ -148,7 +148,7 @@ select, option{
 
 .filter_choices{
     display: flex;
-    background-color: var(--accent-color2);
+    background-color: var(--base-color2);
     color: var(--off-white);
     padding: 0;
     padding-top: 1rem;
