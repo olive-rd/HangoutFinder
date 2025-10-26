@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const BESTTIME_API_KEY = "put_the_key_here_pretty_please"; // <-- replace with your private key
+
 
 app.post("/api/bars", async (req, res) => {
   const { lat, lon } = req.body;
