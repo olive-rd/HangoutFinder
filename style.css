@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Sedgwick+Ave+Display&display=swap');
 
-html{
-}
-
 body{
     font-family: "Oswald";
     font-size: 1.5rem;
@@ -23,7 +20,9 @@ ul{
     top:0;
     overflow: hidden;
     background-color: whitesmoke;
-}
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.077), white),url('https://img.freepik.com/free-vector/seamless-monochrome-vector-screen-tones-isolated-white-background-horizontally-repeatable_8130-3014.jpg');
+    background-size: cover;
+    }
 
 .header_bar{
     padding: .25rem;
@@ -31,8 +30,11 @@ ul{
     padding-top: 0;
   text-align: center;
   font-family: "Sedgwick Ave Display", cursive;
-  font-size: 2rem;
+  font-size: 150%;
   background: radial-gradient(closest-side, gray, transparent);
+  filter: contrast(50);
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000,
+          -2px 2px 0 #000, 1px 1px 0 #000; color: white;
 }
 
 .menu_bar button{
@@ -66,4 +68,43 @@ ul{
 
 .content{
     padding: 1rem;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.filter_panel{
+    display:flex;
+    margin: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content: space-evenly;
+    background-color: lightgray;
+    padding: 4px;
+    flex-wrap: nowrap;
+}
+
+.filter_panel button{
+    padding: 0;
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    height: fit-content;
+    width:fit-content;
+}
+
+.filter_dropdown{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    width:fit-content;
+}
+
+.sorting{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
 }
