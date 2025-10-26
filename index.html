@@ -5,11 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Hangout Finder</title>
-        <style>
-
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body class="poop">
-        <h1>Default: by poop</h1>
+    <body>
+        <div class="header">
+            <div class="header_bar">
+                <h1>☆ Hangout Finder ☆</h1> <!--temp title place-->
+            </div>
+            <div class="menu_bar">
+                <button class="menu_links" onClick="openTab(event, 'Venues')" id="defaultOpen">Venues</button>
+                <button class="menu_links" onClick="openTab(event, 'Venues')">Events</button>
+            </div>
+        </div>
+        <div class="content">
+        </div>
+
+        <script>
+            document.getElementById("defaultOpen").click();
+            function openTab(evt, tabName){
+                var i, tabContent, tabLinks;
+
+                //clear tab contents
+
+                //deactivate all tab links
+                tabLinks = document.getElementsByClassName("menu_links");
+                for(i=0;i<tabLinks.length;i++)
+                    tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+
+                //activate current tab
+                    //display content
+                evt.currentTarget.className += " active";
+            }
+        </script>
     </body>
 </html>

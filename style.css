@@ -1,3 +1,70 @@
-.poop{
-margin:  100px;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Sedgwick+Ave+Display&display=swap');
+
+html{
+}
+
+body{
+    font-family: "Oswald";
+    font-size: 1.5rem;
+    margin: 0;
+    background-color: gray;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.header{
+    position: sticky;
+    top:0;
+    overflow: hidden;
+    background-color: whitesmoke;
+}
+
+.header_bar{
+    padding: .25rem;
+    padding-bottom: 0;
+    padding-top: 0;
+  text-align: center;
+  font-family: "Sedgwick Ave Display", cursive;
+  font-size: 2rem;
+}
+
+.menu_bar button{
+    color: gray;
+    text-align: center;
+    margin: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding:8px;
+    text-decoration: none;
+    cursor:pointer;
+    border: none;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.menu_bar button:hover{
+    background-color: gray;
+    color:whitesmoke;
+}
+
+.menu_bar button.active{
+    background-color: gray;
+    color:whitesmoke;
+}
+
+.menu_bar{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.content{
+    padding: 1rem;
 }
