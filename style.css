@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Sedgwick+Ave+Display&display=swap');
 
-html{
+:root{
+    --base-color1:#0c0c1a;
+    --base-color2:#0e087f;
+    --base-color3:#3c7dbf;
+    --accent-color1:#930dfc;
+    --accent-color2:#206562;
+    --accent-color3:#40d689;
+    --off-white:#eaf3ee;
 }
 
 body{
     font-family: "Oswald";
     font-size: 1.5rem;
     margin: 0;
-    background-color: gray;
+    background-color: var(--base-color1);
 }
 
 a{
@@ -18,12 +25,18 @@ ul{
     list-style-type: none;
 }
 
+select, option{
+    font-family: "Oswald";
+}
+
 .header{
     position: sticky;
     top:0;
     overflow: hidden;
-    background-color: whitesmoke;
-}
+    background-color: var(--base-color2);
+    background-image: linear-gradient(to bottom, var(--base-color2), rgba(148, 13, 252, 0.268)),url('https://img.freepik.com/free-vector/seamless-monochrome-vector-screen-tones-isolated-white-background-horizontally-repeatable_8130-3014.jpg');
+    background-size: cover;
+    }
 
 .header_bar{
     padding: .25rem;
@@ -31,35 +44,44 @@ ul{
     padding-top: 0;
   text-align: center;
   font-family: "Sedgwick Ave Display", cursive;
-  font-size: 2rem;
+  color: var(--off-white);
+  font-size: 150%;
   background: radial-gradient(closest-side, gray, transparent);
+  filter: contrast(50);
+  text-shadow: -2px -2px 0 #000, 2px -2px 0 #000,
+          -2px 2px 0 #000, 1px 1px 0 #000; color: var(--off-white);
 }
 
 .menu_bar button{
-    color: gray;
+    color: var(--base-color2);
+    background-color: var(--base-color3);
     text-align: center;
     margin: 0;
-    padding:25%;
     padding-top: 8px;
     padding-bottom: 8px;
     text-decoration: none;
     cursor:pointer;
     border: none;
-    display: inline-block;
     font-size: 1.5rem;
     transition: 0.3s;
-    
-
+    flex:1;
+    width:auto;
+    border-top: 2px outset #6eb4dc;
 }
 
 .menu_bar button:hover{
-    background-color: gray;
-    color:whitesmoke;
+    background-color: var(--base-color1);
+    color:var(--off-white);
 }
 
 .menu_bar button.active{
-    background-color: gray;
-    color:whitesmoke;
+    background-color: var(--base-color1);
+    color:var(--off-white);
+    
+    border: 4px inset rgba(98, 17, 249, 0.497);
+    border-bottom: none;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .menu_bar{
@@ -68,4 +90,90 @@ ul{
 
 .content{
     padding: 1rem;
+    animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.filter_panel{
+    display:flex;
+    margin: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+    justify-content:left;
+    padding: 4px;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.filter_panel button{
+    padding: 2rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    height: fit-content;
+    width:fit-content;
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+
+    background-image: url('assets/icons/1564525_arrow_load_refresh_reload_icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--accent-color2);
+}
+
+.filter_panel button:hover{
+    background-color: gray;
+    color:var(--off-white);
+}
+
+.filter_dropdown{
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    width:fit-content;
+}
+
+.filter_dropdown select{
+    border:none;
+    font-family: "Oswald";
+    background-color: var(--off-white);
+    color: var(--base-color1);
+}
+
+.filter_choices{
+    display: flex;
+    background-color: var(--accent-color2);
+    color: var(--off-white);
+    padding: 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right:1rem;
+    border: 4px inset rgba(255, 255, 255, 0.497);
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sorting{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+.filter_dropdown, .sorting{
+    margin: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sorting_selection{
+    display:block;
+}
+
+input[type='radio']{
+    accent-color: var(--accent-color1);
 }
