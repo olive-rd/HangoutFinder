@@ -177,3 +177,52 @@ select, option{
 input[type='radio']{
     accent-color: var(--accent-color1);
 }
+
+
+
+
+/* Container for all venue displays */
+#venue-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 20px gap between each venue_display */
+    align-items: center; /* Centers the venue cards */
+    padding: 20px 0;
+}
+
+.venue_display{
+    gap:    10px;
+    margin: 0 auto;
+    width: 900px;
+    align-content: center;
+    grid-template-columns: 360px;
+    background-color: #8b93a7;
+    border-radius: 12%;
+    padding: 20px;
+    box-sizing: border-box; /* Includes padding in width calculation */
+    overflow: hidden; /* Prevents content from overflowing */
+    word-wrap: break-word; /* Breaks long words */
+   
+}
+
+.row{
+    display:    flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap:  wrap;
+    justify-content: space-between;
+}
+
+.stack{
+    display:    flex;
+    flex-direction: column;
+    gap: 10px
+
+}
+
+.venue_image {
+    width: 250px;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+}
