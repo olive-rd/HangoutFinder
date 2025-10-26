@@ -31,10 +31,14 @@
                     </select>
                 </div>
                 <div class="sorting">
-                    <input type="radio" id="sort_busy" name="sort_by"><label for="sort_busy">Sort by Busyness</label>
-                    <input type="radio" id="sort_dist" name="sort_by"><label for="sort_dist">Sort by Distance</label>
+                    <div class="sorting_selection">
+                        <input type="radio" id="sort_busy" name="sort_by"><label for="sort_busy">Sort by Busyness</label>
+                    </div>
+                    <div class="sorting_selection">
+                        <input type="radio" id="sort_dist" name="sort_by"><label for="sort_dist">Sort by Distance</label>
+                    </div>
                 </div>
-                <button>_
+                <button onclick="GenerateVenues(getElementById('keyword-select'), (getElementsByName('sort_by')[0].checked) ? getElementsByName('sort_by')[0].id : getElementsByName('sort_by')[1].id)">_
                     <img src="assets/icons/1564525_arrow_load_refresh_reload_icon.svg" alt="generate"/>
                 </button>
             </div>
@@ -45,6 +49,7 @@
         </div>
 
         <script>
+
             //Tab Selection
             document.getElementById("defaultOpen").click();
             function openTab(evt, tabName){
@@ -64,6 +69,16 @@
                 document.getElementById(tabName).style.display = "block";
                 evt.currentTarget.className += " active";
             }
+
+            function GenerateVenues(category, sorting){
+                console.log("Generating Venues... "+sorting);
+                //venues
+
+                //  function takes in category and sorting,
+                //  category: none, sports, horror, etc. Keywords are parsed for this
+                //  sorting: sort_dist or sort_busy, changes order listed
+            }
+            
         </script>
     </body>
 </html>
