@@ -14,10 +14,14 @@
             </div>
             <div class="menu_bar">
                 <button class="menu_links" onClick="openTab(event, 'Venues')" id="defaultOpen">Venues</button>
-                <button class="menu_links" onClick="openTab(event, 'Venues')">Events</button>
+                <button class="menu_links" onClick="openTab(event, 'Events')">Events</button>
             </div>
         </div>
-        <div class="content">
+        <div class="content" id="Venues">
+            <p>Venues Test</p>
+        </div>
+        <div class="content" id="Events">
+            <p>Events Test</p>
         </div>
 
         <script>
@@ -26,6 +30,9 @@
                 var i, tabContent, tabLinks;
 
                 //clear tab contents
+                tabContent = document.getElementsByClassName("content");
+                for(i=0;i<tabContent.length;i++)
+                    tabContent[i].style.display="none";
 
                 //deactivate all tab links
                 tabLinks = document.getElementsByClassName("menu_links");
@@ -33,7 +40,7 @@
                     tabLinks[i].className = tabLinks[i].className.replace(" active", "");
 
                 //activate current tab
-                    //display content
+                document.getElementById(tabName).style.display = "block";
                 evt.currentTarget.className += " active";
             }
         </script>
