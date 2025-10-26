@@ -92,7 +92,9 @@ combined.forEach(({ v, g, popularity }) => {
        <div class="row">
      
       
-
+<h2>
+      ${g.name || v.venue_name}
+     </h2> 
 <div id="ratings">
 <h2>Rating: ${g.rating || "N/A"}</h2>
 
@@ -109,13 +111,16 @@ combined.forEach(({ v, g, popularity }) => {
 
 
  <div id="address_dis" class="stack">
+  <h4>
       <h3>
     <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
       g.name || v.venue_name
     )}" target="_blank" rel="noopener noreferrer">
-      ${g.name || v.venue_name}
+      ${g.formatted_address}
     </a>
+      
   </h3>
+  </h4>
 </div>
 
 <div class="venue_img" class="stack">
@@ -125,7 +130,7 @@ combined.forEach(({ v, g, popularity }) => {
 </div><!--end of stack class-->
 
 <div id="curr_pop" class="stack">
-            <h3>Current Population${
+            <h3>Current Population: ${
     popularity === "N/A" ? "N/A" : popularity + "%"
   }</h3>
 
