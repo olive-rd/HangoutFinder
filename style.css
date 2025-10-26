@@ -98,8 +98,17 @@ ul{
     padding: 1rem;
 }
 
+/* Container for all venue displays */
+#venue-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 20px gap between each venue_display */
+    align-items: center; /* Centers the venue cards */
+    padding: 20px 0;
+}
 
 .venue_display{
+    gap:    10px;
     margin: 0 auto;
     width: 900px;
     align-content: center;
