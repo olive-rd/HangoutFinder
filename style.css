@@ -32,21 +32,24 @@ ul{
   text-align: center;
   font-family: "Sedgwick Ave Display", cursive;
   font-size: 2rem;
+  background: radial-gradient(closest-side, gray, transparent);
 }
 
 .menu_bar button{
     color: gray;
     text-align: center;
-    margin: 2rem;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding:8px;
+    margin: 0;
+    padding:25%;
+    padding-top: 8px;
+    padding-bottom: 8px;
     text-decoration: none;
     cursor:pointer;
     border: none;
     display: inline-block;
     font-size: 1.5rem;
     transition: 0.3s;
+    
+
 }
 
 .menu_bar button:hover{
@@ -60,8 +63,6 @@ ul{
 }
 
 .menu_bar{
-    justify-content: center;
-    align-items: center;
     display: flex;
 }
 
